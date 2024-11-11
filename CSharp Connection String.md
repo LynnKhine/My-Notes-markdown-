@@ -7,7 +7,8 @@ There is two methods:
 # DB First
 
 You need to configure all these three ways
-- Connection String, - DB context(DBset)
+- Connection String
+- DB context(DBset)
 
 ### Connection String
 ```json
