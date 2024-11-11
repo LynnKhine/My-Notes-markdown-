@@ -1,10 +1,12 @@
 # Csharp connecting with the database
 
-There is two methods
-DB first and Code First
+There is two methods:
+1. DB first and
+2. Code First
 
 # DB First
-three ways to connect 
+
+You need to configure all these three ways
 - Connection String, - DB context(DBset)
 
 ### Connection String
@@ -14,8 +16,10 @@ three ways to connect
     "DefaultConnection": "Server=your_server_name;Database=your_database_name;User Id=your_username;Password=your_password;Trusted_Connection=False;MultipleActiveResultSets=true;"
   }
 }
+```
 
 ### Add builder configuration in Program.cs
+
 You need to paste this above `builder.Services.AddControllers();`
 
 ```csharp
@@ -25,7 +29,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 ```
 
 ### Create DBContext (DBset)
-create a new file under new folder and this file is to keep entity names
+
+Create a new file under new folder and this file is to keep entity names
 
 ```csharp
 public class AppDbContext : DbContext
