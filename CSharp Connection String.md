@@ -1,8 +1,8 @@
 # Csharp connecting with the database
 
 There is two methods:
-1. DB first and
-2. Code First
+- [Go to 1. DB First](#1.-db-first) and
+- [Go to 2. Code First](#2.-code-first)
 
 # DB First
 
