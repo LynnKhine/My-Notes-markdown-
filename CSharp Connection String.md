@@ -7,10 +7,15 @@ There is two methods:
 # DB First
 
 You need to configure all these three ways
-- Connection String
+- Connection String 
+- Builder Configuration
 - DB context(DBset)
 
-### Connection String
+
+### Connection String in appsettings.json
+
+Paste this in appsettings.json  
+
 ```json
 {
   "ConnectionStrings": {
