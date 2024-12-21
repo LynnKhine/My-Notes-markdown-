@@ -1,7 +1,8 @@
 # Csharp Notes
 These are my notes for C#
 
-- [Linq](#linq) and
+- [Linq](#linq)
+- [LifeTime](#lifetime)
 - [Other](#other)
 
 
@@ -78,6 +79,10 @@ public GetProductListResponseModel GetProductList(GetProductListRequestModel mod
 **FirstOrDefault()** is used when only one row from the database is required <br/>
 while **ToList()** is used when we need to get the responses list(multiple rows) from the database.
 
+# LifeTime
+
+In ASP.NET Core, the *AddTransient*, *AddScoped*, and *AddSingleton* methods define the lifetime of a service in the Dependency Injection (DI) container. <br/>
+The key difference is how long the service instance lives and how often it is created or reused.
 
 # Other
 
