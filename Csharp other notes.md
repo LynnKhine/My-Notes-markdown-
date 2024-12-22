@@ -84,5 +84,9 @@ while **ToList()** is used when we need to get the responses list(multiple rows)
 In ASP.NET Core, the *AddTransient*, *AddScoped*, and *AddSingleton* methods define the lifetime of a service in the Dependency Injection (DI) container. <br/>
 The key difference is how long the service instance lives and how often it is created or reused.
 
+# Parameter with Get and Post
+
+In controller when we use HttpGet method, the parameter for the controller cannot be model while for HttpPost parameter can be model
+
 # Other
 
