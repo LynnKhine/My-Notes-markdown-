@@ -3,6 +3,8 @@ These are my notes for C#
 
 - [Linq](#linq)
 - [LifeTime](#lifetime)
+- [Parameter with HTTPGet and Post](#Parameter with get and post)
+- [classname new classname()] (#classname new classname())
 - [Other](#other)
 
 
@@ -87,6 +89,29 @@ The key difference is how long the service instance lives and how often it is cr
 # Parameter with Get and Post
 
 In controller when we use HttpGet method, the parameter for the controller cannot be model while for HttpPost parameter can be model
+
+# Classname new classname()
+
+``` csharp
+GetAuthorResponseModel result = new GetAuthorResponseModel();
+result.Id = "123";
+result.Name = "J.K. Rowling";
+
+Console.WriteLine($"Author ID: {result.Id}, Author Name: {result.Name}");
+```
+or 
+``` csharp
+GetAuthorResponseModel result = new GetAuthorResponseModel()
+{
+    Id = model.Id,
+    Name = model.Name,
+    RealName = model.RealName,
+    Bio = model.Bio
+};
+```
+can be write like this and 
+
+The purpose of the code is to create an instance of the **GetAuthorResponseModel** class
 
 # Other
 
