@@ -3,8 +3,8 @@ These are my notes for C#
 
 - [Linq](#linq)
 - [LifeTime](#lifetime)
-- [Parameter with HTTPGet and Post](#Parameter with get and post)
-- [classname new classname()] (#classname new classname())
+- [Parameter with HTTPGet and Post](#parameter-with-get-and-post)
+- [classname new classname()](#classname-new-classname())
 - [Other](#other)
 
 
