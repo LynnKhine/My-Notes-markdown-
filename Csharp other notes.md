@@ -6,6 +6,7 @@ These are my notes for C#
 - [Parameter with HTTPGet and Post](#parameter-with-get-and-post)
 - [classname new classname()](#classname-new-classname())
 - [AsNoTracking before Select](#asnotracking-before-select)
+- [Return Same Type](#return-same-type)
 - [Other](#other)
 
 
@@ -157,6 +158,59 @@ Once you call `.ToList()`, the query is executed, and the result is loaded into 
 - The query stops being a deferred LINQ query.
 - All entities or objects (like `BookModel`) are materialized into a list.
 - If you’ve applied `.AsNoTracking()` before `.ToList()`, no tracking occurs, and the result is purely read-only.
+
+# Return Same Type
+
+The return type of a method must match the declared return type of the method because it ensures type safety and consistency in the code. 
+
+### Correct 
+```csharp
+public GetBookByIdResponseModel GetBookById(GetBookByIdRequestModel model)
+{
+    var book = _context.BookDbSet.Where(a => a.Id == model.Id).AsNoTracking().FirstOrDefault();
+
+    BookModel bookmodel = new BookModel()
+    {
+        Id = book.Id,
+        Name = book.Name,
+        PublishedYear = book.PublishedYear,
+        TotalQuantity = book.TotalQuantity,
+        AvailableQuantity = book.AvailableQuantity
+    };
+
+    GetBookByIdResponseModel result = new GetBookByIdResponseModel()
+    {
+        BookRes = bookmodel
+    };
+
+    return result;
+
+    //return new GetBookByIdResponseModel
+    //{
+    //    Book = result
+    //};
+}
+```
+
+### Wrong 
+
+```csharp
+public GetBookByIdResponseModel GetBookById(GetBookByIdRequestModel model)
+{
+    var book = _context.BookDbSet.Where(a => a.Id == model.Id).AsNoTracking().FirstOrDefault();
+
+    BookModel result = new BookModel()
+    {
+        Id = book.Id,
+        Name = book.Name,
+        PublishedYear = book.PublishedYear,
+        TotalQuantity = book.TotalQuantity,
+        AvailableQuantity = book.AvailableQuantity
+    };
+
+    return result;
+}
+```
 
 # Other
 
