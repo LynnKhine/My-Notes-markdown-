@@ -5,6 +5,7 @@ These are my notes for C#
 - [LifeTime](#lifetime)
 - [Parameter with HTTPGet and Post](#parameter-with-get-and-post)
 - [classname new classname()](#classname-new-classname())
+- [AsNoTracking before Select](#asnotracking-before-select)
 - [Other](#other)
 
 
@@ -112,6 +113,50 @@ GetAuthorResponseModel result = new GetAuthorResponseModel()
 can be write like this and 
 
 The purpose of the code is to create an instance of the **GetAuthorResponseModel** class
+
+# AsNoTracking before Select 
+
+### How `.AsNoTracking()` and `.Select()` Work Together
+
+- **`.AsNoTracking()`**: Ensures that EF does not track the entities involved in the query. It applies globally to all subsequent parts of the query.
+- **`.Select()`**: Projects the data into a new shape (e.g., a custom model like `BookModel`) or extracts specific columns.
+
+When you project data into a new object in `.Select()` (like your `BookModel`), EF doesn’t need to track anything because the result of the query is no longer an EF entity. However, **`.AsNoTracking()` is still helpful to avoid the overhead of tracking intermediate entities** (e.g., `BookDbSet`, `AuthorDbSet`, `CategoryDbSet`) during the query.
+
+---
+
+### Should You Use `.AsNoTracking()` Before `.Select()`?
+**Yes**, it's a good practice to apply `.AsNoTracking()` **before** `.Select()` when:
+1. The query involves entities (`_context.BookDbSet`, `_context.AuthorDbSet`, etc.).
+2. You are projecting the result into custom objects like `BookModel`, not modifying entities.
+3. The operation is read-only.
+
+Example:
+```csharp
+var booklist = _context.BookDbSet
+    .AsNoTracking() // Applies to the whole query
+    .Join(...) // Join logic
+    .Where(...) // Filtering logic
+    .Select(book => new BookModel // Projection
+    {
+        Id = book.book.Id,
+        Name = book.book.Name,
+        AuthorId = book.author.Id,
+        AuthorName = book.author.Name,
+        CategoryId = book.category.Id,
+        CategoryName = book.category.Name,
+        PublishedYear = book.book.PublishedYear,
+        TotalQuantity = book.book.TotalQuantity,
+        AvailableQuantity = book.book.AvailableQuantity
+    })
+    .ToList();
+```
+
+### After `.ToList()`
+Once you call `.ToList()`, the query is executed, and the result is loaded into memory. At this point:
+- The query stops being a deferred LINQ query.
+- All entities or objects (like `BookModel`) are materialized into a list.
+- If you’ve applied `.AsNoTracking()` before `.ToList()`, no tracking occurs, and the result is purely read-only.
 
 # Other
 
