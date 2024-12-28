@@ -194,7 +194,7 @@ public GetBookByIdResponseModel GetBookById(GetBookByIdRequestModel model)
 
 ### Wrong 
 
-As you see here, `BookModel` is not the same type with `GetBookByIdResponseModel` and IDE will show you the error that `result` is not null.
+As you see here, `BookModel` is not the same type with `GetBookByIdResponseModel` and IDE will show you the error that `result` is not null here.
 
 ```csharp
 public GetBookByIdResponseModel GetBookById(GetBookByIdRequestModel model)
