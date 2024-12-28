@@ -7,7 +7,7 @@ These are my notes for C#
 - [classname new classname()](#classname-new-classname())
 - [AsNoTracking before Select](#asnotracking-before-select)
 - [Return Same Type](#return-same-type)
-- [Access Modifier in C`#`](#access-modifier-in-C`#`)
+- [Access Modifier in C#](#access-modifier-in-C#)
 - [Other](#other)
 
 
@@ -215,7 +215,7 @@ public GetBookByIdResponseModel GetBookById(GetBookByIdRequestModel model)
     return result;
 }
 ```
-# Access Modifier in C`#`
+# Access Modifier in C#
 
 - `public`: Use for methods, properties, or classes that need to be accessible globally.
 - `private`: Use for internal logic or helper methods that should not be exposed outside the class.
