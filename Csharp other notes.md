@@ -7,6 +7,7 @@ These are my notes for C#
 - [classname new classname()](#classname-new-classname())
 - [AsNoTracking before Select](#asnotracking-before-select)
 - [Return Same Type](#return-same-type)
+- [Access Modifier in C`#`](#access-modifier-in-C`#`)
 - [Other](#other)
 
 
@@ -85,7 +86,8 @@ while **ToList()** is used when we need to get the responses list(multiple rows)
 
 # LifeTime
 
-In ASP.NET Core, the *AddTransient*, *AddScoped*, and *AddSingleton* methods define the lifetime of a service in the Dependency Injection (DI) container. <br/>
+In ASP.NET Core, the `AddTransient`, `AddScoped`, and `AddSingleton` methods define the lifetime of a service in the Dependency Injection (DI) container. <br/>
+
 The key difference is how long the service instance lives and how often it is created or reused.
 
 # Parameter with Get and Post
@@ -213,6 +215,18 @@ public GetBookByIdResponseModel GetBookById(GetBookByIdRequestModel model)
     return result;
 }
 ```
+# Access Modifier in C`#`
+
+- `public`: Use for methods, properties, or classes that need to be accessible globally.
+- `private`: Use for internal logic or helper methods that should not be exposed outside the class.
+- `protected`: Use for members that child classes need access to.
+- `internal`: Use to expose functionality only within the same assembly or project.
+- `protected internal`: Use for a mix of inheritance and internal usage.
+- `private protected`: Use for strict access control to derived classes within the same assembly.
+
+By carefully choosing access modifiers, you can control the encapsulation and scope of your code, which is a fundamental aspect of Object-Oriented Programming (OOP).
+
+Those are the main access modifiers in C#. However, there are additional modifiers for specific behaviors (like `static`, `abstract`, or `virtual`), but those aren't directly related to access control.
 
 # Other
 
